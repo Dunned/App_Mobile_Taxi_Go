@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".activities.RegisterActivity">
 
 
     <FrameLayout
@@ -29,7 +29,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_height="680dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_gravity="center"
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_person_white"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 />
 
             <TextView
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:text="REGISTRO"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:textAlignment="center"
             />
@@ -76,6 +76,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textFieldName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nombres"
@@ -96,6 +97,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textFieldLastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Apellidos"
@@ -117,6 +119,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textFieldphone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Telefono"
@@ -137,6 +140,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textFieldemail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Correo Electronico"
@@ -158,6 +162,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textFieldpassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Contraseña"
@@ -168,8 +173,30 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:startIconDrawable="@drawable/ic_lock_white"
+            app:startIconTint="@color/white"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textFieldConfirmpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirmar contraseña"
+                android:inputType="textPassword"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
 
             <Button
+                android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="REGISTRATE"

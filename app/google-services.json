@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "865116126728",
+    "project_id": "app-taxis-cliente",
+    "storage_bucket": "app-taxis-cliente.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865116126728:android:1da1b61d22e62a8597dbbd",
+        "android_client_info": {
+          "package_name": "com.eduardojr.app_taxis_cliente"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865116126728-re2v1c3pug7dqoii76kpjhmh93c5cavd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqEVb5NbOk5gd9pmVS6QvZUGgrQg_1XbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "865116126728-re2v1c3pug7dqoii76kpjhmh93c5cavd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
