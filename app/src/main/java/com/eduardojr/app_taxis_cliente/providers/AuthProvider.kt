@@ -8,7 +8,23 @@ class AuthProvider {
 
     val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
+    fun login(email: String,password: String):Task<AuthResult>{
+        return auth.signInWithEmailAndPassword(email, password)
+    }
+
     fun register(email: String, password:String): Task<AuthResult> {
         return auth.createUserWithEmailAndPassword(email, password)
+    }
+
+    fun getId():String{
+        return auth.currentUser?.uid ?: ""
+    }
+
+    fun existSession():Boolean{
+        var exist = false
+        if (auth.currentUser != null){
+            exist = true
+        }
+        return exist
     }
 }

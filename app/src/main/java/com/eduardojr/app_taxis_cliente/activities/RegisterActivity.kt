@@ -3,10 +3,13 @@ package com.eduardojr.app_taxis_cliente.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import android.widget.Toast
 import com.eduardojr.app_taxis_cliente.databinding.ActivityRegisterBinding
+import com.eduardojr.app_taxis_cliente.models.Client
 import com.eduardojr.app_taxis_cliente.providers.AuthProvider
+import com.eduardojr.app_taxis_cliente.providers.ClientProvider
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -14,6 +17,8 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     
     private val authProvider = AuthProvider()
+
+    private val clientProvider = ClientProvider()
     
 
 
@@ -47,13 +52,38 @@ class RegisterActivity : AppCompatActivity() {
         if (isValidForm(name,lastname,email,phone,password,confirmpassword)){
                 authProvider.register(email,password).addOnCompleteListener { 
                     if (it.isSuccessful){
-                        Toast.makeText(this@RegisterActivity, "Registro Exitoso", Toast.LENGTH_LONG).show()
+                        val client = Client(
+                            id = authProvider.getId(),
+                            name = name,
+                            lastName = lastname,
+                            email = email,
+                            phone = phone
+                        )
+
+                        clientProvider.create(client).addOnCompleteListener {
+                            if(it.isSuccessful){
+                                Toast.makeText(this@RegisterActivity, "Registro Exitoso", Toast.LENGTH_SHORT).show()
+                                goToMap()
+                            }
+                            else{
+                                Toast.makeText(this@RegisterActivity, "Error almacenando datos usuario"+it.exception.toString(), Toast.LENGTH_SHORT).show()
+                                Log.d("FIREBASE","Error: " + it.exception.toString())
+                            }
+                        }
                     }
                     else{
                         Toast.makeText(this@RegisterActivity, "Registro Fallido" + it.exception.toString(), Toast.LENGTH_LONG).show()
+                        Log.d("FIREBASE","Error: " + it.exception.toString())
                     }
                 }
         }
+    }
+
+
+    private fun goToMap(){
+        val i = Intent(this, MapActivity::class.java)
+        i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(i)
     }
 
     private fun isValidForm(name:String,lastname:String,email:String,phone:String, password:String,confirmPassword:String):Boolean{
